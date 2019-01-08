@@ -16,7 +16,7 @@ client.on('ready', () => {
     console.log(`[.] ${client.users.size}`)
 });
 //by ! - .'
-const prefix = "1"
+const prefix = "D"
 client.on('message', async msg => { // eslint-disable-line
 	if (msg.author.bot) return undefined;
 	//by ! - .'
