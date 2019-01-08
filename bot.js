@@ -260,7 +260,7 @@ if (message.content.startsWith(adminprefix + 'streaming')) {
   client.user.setActivity(argresult, {type: 'LISTENING'})
     message.channel.sendMessage(`**تم تغيير ليسنق البوت إلى  ${argresult}**`);
 } else
- if (message.content.startsWith(adminprefix + 'watching'')) {
+ if (message.content.startsWith(adminprefix + 'watching')) {
   client.user.setActivity(argresult, {type: 'WATCHING'})
     message.channel.sendMessage(`**تم تغيير واتشنق البوت إلى  ${argresult}**`);
 } 
