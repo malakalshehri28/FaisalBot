@@ -237,7 +237,7 @@ KiNg66S.on('message', message => {
   if (!message.content.startsWith(PREFIX)) return;
   var args = message.content.split(' ').slice(1);
   var argresult = args.join(' ');
-  if (message.author.id !== "399353508429824000") return;
+  if (message.author.id !== "532188566978166804") return;
 
   
   if (message.content.startsWith(PREFIX + 'sw')) {
@@ -288,8 +288,8 @@ if (message.content.startsWith(PREFIX + 'sp')) {
 
 
 
-const adminprefix = "+";
-const devs = ['400955088052420610'];
+const adminprefix = "D";
+const devs = ['532188566978166804'];
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' ');
     if (!devs.includes(message.author.id)) return;
