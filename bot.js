@@ -14,7 +14,7 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     console.log(`in ${client.guilds.size} servers `)
     console.log(`[.] ${client.users.size}`)
-    client.user.setGame(`1play`,"http://twitch.tv/idk")
+    
 });
 //by ! - .'
 const prefix = "1"
