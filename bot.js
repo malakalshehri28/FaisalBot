@@ -15,6 +15,63 @@ client.user.setGame(`Faisal / فيصل`,"http://twitch.tv//idk")
 
 	
 
+
+client.on('message', message => {
+    if (message.content.startsWith("رابط")) {
+
+  message.channel.createInvite({
+        thing: true,
+        maxUses: 25,
+        maxAge: 86400
+    }).then(invite =>
+      message.author.sendMessage(invite.url)
+    )
+  message.channel.send("**تم ارسال الرابط برسالة خاصة**")
+
+message.author.send(`**مدة الرابط : يوم
+ استخدامات الرابط : 25**`)
+
+    }
+});
+
+
+client.on('message', message => {
+
+    if (message.content === "#mc") {
+                        if(!message.channel.guild) return message.reply(' هذا الامر فقط للسيرفرات !!');
+
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' ليس لديك صلاحيات');
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: false
+
+           }).then(() => {
+               message.reply("تم تقفيل الشات")
+           });
+             }
+if (message.content === "#umc") {
+    if(!message.channel.guild) return message.reply(' هذا الامر فقط للسيرفرات !!');
+
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('ليس لديك صلاحيات');
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: true
+
+           }).then(() => {
+               message.reply("تم فتح الشات")
+           });
+             }
+
+
+
+});
+
+
+
+
+
+
+
+
+
 client.on('message', message => {
 if(!message.channel.guild) return;
 if(message.content.startsWith("اسحب")) {
