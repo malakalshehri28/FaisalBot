@@ -8,7 +8,7 @@ client.on('ready', () => {
       console.log(`ON ${client.guilds.size} Servers '     Script By : AJ ' `);
     console.log(`----------------`);
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`Faisal / فيصل`,"http://twitch.tv//idk")
+client.user.setGame(`Control .`,"http://twitch.tv//idk")
 });
 
 
