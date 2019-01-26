@@ -93,7 +93,7 @@ var embed = new Discord.RichEmbed()
  message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
 message.guild.members.get(usermentioned).send(embed)
 } else {
-message.channel.send("`لا تستطيع سحب "+ message.mentions.members.first() +" `يجب ان يكون هذه العضو في روم صوتي`")
+message.channel.send("لا تستطيع سحب "+ message.mentions.members.first() +" يجب ان يكون هذه العضو في روم صوتي")
 }
 } else {
  message.channel.send("**يجب ان تكون في روم صوتي لكي تقوم بسحب العضو أليك**")
