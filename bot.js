@@ -213,7 +213,7 @@ client.on('message', message => {
 
 client.on('message', (message) => {
 
-    if (message.content.startsWith('#كيك')) {
+    if (message.content.startsWith('كيك')) {
 
         var member= message.mentions.members.first();
 
