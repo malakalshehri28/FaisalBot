@@ -24,7 +24,7 @@ client.on('message' , message => {
  
   let args = message.content.split(" ").slice(1);
  
-  if (command == "باند") {
+  if (command == "ban") {
                if(!message.channel.guild) return message.reply('** This command only for servers**');
          
   if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**You Don't Have ` BAN_MEMBERS ` Permission**");
@@ -213,7 +213,7 @@ client.on('message', message => {
 
 client.on('message', (message) => {
 
-    if (message.content.startsWith('كيك')) {
+    if (message.content.startsWith('kick')) {
 
         var member= message.mentions.members.first();
 
