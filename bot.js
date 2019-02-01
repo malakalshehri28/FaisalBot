@@ -15,31 +15,34 @@ client.user.setGame(`Special.`,"http://twitch.tv//idk")
 
 
 
+client.on('message' , message => {
+  if (message.author.dark) return;
+  if (!message.content.startsWith(prefix)) return;
+ 
+  let command = message.content.split(" ")[0];
+  command = command.slice(prefix.length);
+ 
+  let args = message.content.split(" ").slice(1);
+ 
+  if (command == "باند") {
+               if(!message.channel.guild) return message.reply('** This command only for servers**');
+         
+  if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**You Don't Have ` BAN_MEMBERS ` Permission**");
+  if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
+  let user = message.mentions.users.first();
+  let reason = message.content.split(" ").slice(2).join(" ");
+      /*let banlog = client.channels.find("name", "ban-log");
+  if(!banlog) return message.reply("I've detected that this server doesn't have a ban-log text channel.");*/
+  if (message.mentions.users.size < 1) return message.reply("**منشن شخص**");
+  if(!reason) return message.reply ("**اكتب سبب الباند**");
+  if (!message.guild.member(user)
+  .bannable) return message.reply("**لايمكنني ابند شخص اعلى من رتبتي يرجه اعطاء البوت رتبه عالي**");
+ 
+  message.guild.member(user).ban(7, user);
+  message.channel.sendMessage("**لقد تم اعطاء الباند الي شخص بنجاح** ✅");
+}
+});
 
-client.on('message', msg => {
- 
-    if (msg.author.bot) return;
-    if (!msg.content.startsWith(prefix)) return;
-    let command = msg.content.split(" ")[0];
-    command = command.slice(prefix.length);
-    let args = msg.content.split(" ").slice(1);
- 
-      if(command === "clear") {
-          const emoji = client.emojis.find("name", "wastebasket")
-      let textxt = args.slice(0).join("");
-      if(msg.member.hasPermission("MANAGE_MESSAGES")) {
-      if (textxt == "") {
-          msg.delete().then
-          msg.channel.bulkDelete(1000).then(m => m.delete(3000));
-  } else {
-      msg.delete().then
-      msg.delete().then
-      msg.channel.bulkDelete(textxt);
-          msg.channel.send("```php\nعدد الرسائل التي تم مسحها: " + textxt + "\n```").then(m => m.delete(3000));
-          }    
-      }
-  }
-  });
 
 
 
