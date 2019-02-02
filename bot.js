@@ -289,7 +289,7 @@ const prefix = '#'
  
   client.on('message', message => {
     if (message.content.startsWith("#colors")) {
-      return message.channel.send({file : "https://e.top4top.net/p_112844x180.jpeg"})
+      return message.channel.send({file : "https://a.top4top.net/p_11280dq5n0.jpeg"})
     }
   });
 
