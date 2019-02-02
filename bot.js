@@ -288,7 +288,7 @@ const prefix = '#'
  
  
   client.on('message', message => {
-    if (message.content.startsWith("colors")) {
+    if (message.content.startsWith("#colors")) {
       return message.channel.send({file : "https://e.top4top.net/p_112844x180.jpeg"})
     }
   });
