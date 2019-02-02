@@ -287,9 +287,9 @@ const prefix = '#'
  
  
  
-  client.on('message', msg => {//msg
-    if (msg.content === ('colors') {
-      msg.channel.send({file : "https://cdn.pg.sa/1c4R2LijPA.png"})
+  client.on('message', message => {
+    if (message.content.startsWith("رابط")) {
+      return message.channel.send({file : "https://cdn.pg.sa/1c4R2LijPA.png"})
     }
   });
 
