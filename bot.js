@@ -44,9 +44,17 @@ client.on("message", message => {
 var config = {
   events: [
     {type: "CHANNEL_CREATE", logType: "CHANNEL_CREATE", limit: 1 , delay: 3000},
+{type: "CHANNEL_CREATE", logType: "CHANNEL_CREATE", limit: 1 , delay: 2000},
+{type: "CHANNEL_CREATE", logType: "CHANNEL_CREATE", limit: 5 , delay: 1000},
     {type: "CHANNEL_DELETE", logType: "CHANNEL_DELETE", limit: 1, delay: 3000},
+{type: "CHANNEL_DELETE", logType: "CHANNEL_DELETE", limit: 1, delay: 2000},
+{type: "CHANNEL_DELETE", logType: "CHANNEL_DELETE", limit: 5, delay: 1000},
     {type: "GUILD_MEMBER_REMOVE", logType: "MEMBER_KICK", limit: 1, delay: 3000},
-    {type: "GUILD_BAN_ADD", logType: "MEMBER_BAN_ADD", limit: 1, delay: 3000}
+{type: "GUILD_MEMBER_REMOVE", logType: "MEMBER_KICK", limit: 1, delay: 2000},
+{type: "GUILD_MEMBER_REMOVE", logType: "MEMBER_KICK", limit: 5, delay: 1000},
+    {type: "GUILD_BAN_ADD", logType: "MEMBER_BAN_ADD", limit: 1, delay: 3000},
+{type: "GUILD_BAN_ADD", logType: "MEMBER_BAN_ADD", limit: 1, delay: 2000},
+{type: "GUILD_BAN_ADD", logType: "MEMBER_BAN_ADD", limit: 5, delay: 1000}
   ]
 }
 client.on("raw", (packet)=> {
@@ -425,32 +433,26 @@ client.on('message', message => {
 
 
 
-client.on('message' , message => {
-  if (message.author.dark) return;
-  if (!message.content.startsWith(prefix)) return;
- 
-  let command = message.content.split(" ")[0];
-  command = command.slice(prefix.length);
- 
-  let args = message.content.split(" ").slice(1);
- 
-  if (command == "ban") {
-               if(!message.channel.guild) return message.reply('** This command only for servers**');
-         
-  if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**You Don't Have ` BAN_MEMBERS ` Permission**");
-  if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
-  let user = message.mentions.users.first();
-  let reason = message.content.split(" ").slice(2).join(" ");
-      /*let banlog = client.channels.find("name", "ban-log");
-  if(!banlog) return message.reply("I've detected that this server doesn't have a ban-log text channel.");*/
-  if (message.mentions.users.size < 1) return message.reply("**منشن شخص**");
-  if(!reason) return message.reply ("**اكتب سبب الباند**");
-  if (!message.guild.member(user)
-  .bannable) return message.reply("**لايمكنني ابند شخص اعلى من رتبتي يرجه اعطاء البوت رتبه عالي**");
- 
-  message.guild.member(user).ban(7, user);
-  message.channel.sendMessage("**✅ لقد تم اعطاء الباند **");
-}
+client.on('message', (message) => {
+
+    if (message.content.startsWith('#kick')) {
+
+      if(!message.member.hasPermission('KICK_MEMBERS')) return message.reply('هذا الخاصية الاداره فقط');
+
+        var member= message.mentions.members.first();
+
+        member.kick().then((member) => {
+
+         message.channel.send(member.displayName + 'لقد تم اعطاء الكيك ✅');
+
+        }).catch(() => {
+
+            message.channel.send('Error');
+
+        });
+
+    }
+
 });
 
 
@@ -603,34 +605,26 @@ client.on('message', message => {
 
 
 
+client.on('message', (message) => {
 
+    if (message.content.startsWith('#ban')) {
 
-client.on('message' , message => {
-  if (message.author.dark) return;
-  if (!message.content.startsWith(prefix)) return;
- 
-  let command = message.content.split(" ")[0];
-  command = command.slice(prefix.length);
- 
-  let args = message.content.split(" ").slice(1);
- 
-  if (command == "kick") {
-               if(!message.channel.guild) return message.reply('** This command only for servers**');
-         
-  if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("**You Don't Have ` KICK_MEMBERS ` Permission**");
-  if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.reply("**I Don't Have ` KICK_MEMBERS ` Permission**");
-  let user = message.mentions.users.first();
-  let reason = message.content.split(" ").slice(2).join(" ");
-      /*let kicklog = client.channels.find("name", "kick-log");
-  if(!kicklog) return message.reply("I've detected that this server doesn't have a kick-log text channel.");*/
-  if (message.mentions.users.size < 1) return message.reply("**منشن شخص**");
-  if(!reason) return message.reply ("**اكتب سبب الكيك**");
-  if (!message.guild.member(user)
-  .bannable) return message.reply("**لايمكنني اطرد شخص اعلى من رتبتي يرجه اعطاء البوت رتبه عالي**");
- 
-  message.guild.member(user).kick(7, user);
-  message.channel.sendMessage("**لقد تم اعطاءالكيك ✅**");
-}
+      if(!message.member.hasPermission('BAN_MEMBERS')) return message.reply('هذا الخاصية الاداره فقط');
+
+        var member= message.mentions.members.first();
+
+        member.ban().then((member) => {
+
+         message.channel.send(member.displayName + 'لقد تم اعطاء الباند ✅');
+
+        }).catch(() => {
+
+            message.channel.send('Error');
+
+        });
+
+    }
+
 });
 
 
