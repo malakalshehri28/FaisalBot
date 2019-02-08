@@ -366,7 +366,7 @@ client.on('message' , message => {
   .bannable) return message.reply("**لايمكنني ابند شخص اعلى من رتبتي يرجه اعطاء البوت رتبه عالي**");
  
   message.guild.member(user).ban(7, user);
-  message.channel.sendMessage("**لقد تم اعطاء الباند الي شخص بنجاح**");
+  message.channel.sendMessage("**✅ لقد تم اعطاء الباند **");
 }
 });
 
@@ -561,7 +561,7 @@ client.on('message' , message => {
   .bannable) return message.reply("**لايمكنني اطرد شخص اعلى من رتبتي يرجه اعطاء البوت رتبه عالي**");
  
   message.guild.member(user).kick(7, user);
-  message.channel.sendMessage("**لقد تم اعطاء كيك الي شخص بنجاح**");
+  message.channel.sendMessage("**لقد تم اعطاء ✅**");
 }
 });
 
