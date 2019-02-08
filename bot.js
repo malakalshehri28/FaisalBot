@@ -561,7 +561,7 @@ client.on('message',async message => {
       SPEAK: false
     });
     setInterval(() => {
-      c.setName(`Voice Online : [ ${message.guild.members.filter(m => m.voiceChannel).size} ]`)
+      c.setName(`Free Voice : [ ${message.guild.members.filter(m => m.voiceChannel).size} ]`)
     },1000);
   });
   }
