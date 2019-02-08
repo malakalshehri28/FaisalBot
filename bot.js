@@ -15,6 +15,89 @@ client.user.setGame(`Free Mic.`,"http://twitch.tv//idk")
 
 
 
+client.on("message", message => {
+    var prefix = "#";
+ 
+            var args = message.content.substring(prefix.length).split(" ");
+            if (message.content.startsWith(prefix + "مسح")) {
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('⚠ | **ليس لديك صلاحيات**');
+        var msg;
+        msg = parseInt();
+     
+      message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
+      message.channel.sendMessage("", {embed: {
+        title: "تم مسح الشات بنجاح ✅",
+        color: 0x06DF00,
+        description: "تم مسح الرسائل بنجاح",
+        footer: {
+          text: "Free Mic." 
+        }
+      }}).then(msg => {msg.delete(3000)});
+                          }
+ 
+     
+});
+
+
+
+
+var config = {
+  events: [
+    {type: "CHANNEL_CREATE", logType: "CHANNEL_CREATE", limit: 1 , delay: 3000},
+    {type: "CHANNEL_DELETE", logType: "CHANNEL_DELETE", limit: 1, delay: 3000},
+    {type: "GUILD_MEMBER_REMOVE", logType: "MEMBER_KICK", limit: 1, delay: 3000},
+    {type: "GUILD_BAN_ADD", logType: "MEMBER_BAN_ADD", limit: 1, delay: 3000}
+  ]
+}
+client.on("raw", (packet)=> {
+  let {t, d} = packet, type = t, {guild_id} = data = d || {};
+  if (type === "READY") {
+    client.startedTimestamp = new Date().getTime();
+    client.captures = [];
+  }
+  let event = config.events.find(anEvent => anEvent.type === type);
+  if (!event) return;
+  let guild = client.guilds.get(guild_id);
+  if (!guild) return;
+  guild.fetchAuditLogs({limit : 1, type: event.logType})
+    .then(eventAudit => {
+      let eventLog = eventAudit.entries.first();
+      if (!eventLog) return;
+      let executor = eventLog.executor;
+      guild.fetchAuditLogs({type: event.logType, user: executor})
+        .then((userAudit, index) => {
+          let uses = 0;
+          userAudit.entries.map(entry => {
+            if (entry.createdTimestamp > client.startedTimestamp && !client.captures.includes(entry.id)) uses += 1;
+          });
+          setTimeout(() => {
+            client.captures.push(index);
+          }, event.delay || 2000)
+          if (uses >= event.limit) {
+            client.emit("reachLimit", {
+              user: userAudit.entries.first().executor,
+              member: guild.members.get(executor.id),
+              guild: guild,
+              type: event.type,
+            })
+          }
+        }).catch(console.error)
+    }).catch(console.error)
+});
+client.on("reachLimit", (limit)=> {
+  let log = limit.guild.channels.find( channel => channel.name === "log");
+  log.send(limit.user.username+"\ntried to hack (!)");
+  limit.guild.owner.send(limit.user.username+"\ntried to hack (!)")
+  limit.member.roles.map(role => {
+    limit.member.removeRole(role.id)
+    .catch(log.send)
+  });
+});
+
+
+
+
+
 
 client.on('message', message => {
 const prefix = '#' 
@@ -461,21 +544,6 @@ message.react("❌")
  }}});
 
 
-
-
-
-
-client.on('message', message => {
-    let args = message.content.split(" ").slice(1);
-if (message.content.startsWith("مسح")) {
- let args = message.content.split(" ").slice(1)
-    let messagecount = parseInt(args);
-    if (args > 100) return message.reply("**يجب ان يكون عدد المسح أقل من 100 .**").then(messages => messages.delete(5000))
-    if (!messagecount) return message.reply("**أختر كميه الرسائل المراد مسحها .**").then(messages => messages.delete(5000))
-    message.channel.fetchMessages({limit: messagecount + 1}).then(messages => message.channel.bulkDelete(messages));
-    message.channel.send(`\`${args}\` : __عدد الرسائل التي تم مسحها __ `).then(messages => messages.delete(5000));
-  }
-  });
 
 
 
