@@ -8,7 +8,7 @@ client.on('ready', () => {
       console.log(`ON ${client.guilds.size} Servers '     Script By : AJ ' `);
     console.log(`----------------`);
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`Special.`,"http://twitch.tv//idk")
+client.user.setGame(`Free Mic.`,"http://twitch.tv//idk")
 });
 
 
@@ -561,7 +561,7 @@ client.on('message' , message => {
   .bannable) return message.reply("**لايمكنني اطرد شخص اعلى من رتبتي يرجه اعطاء البوت رتبه عالي**");
  
   message.guild.member(user).kick(7, user);
-  message.channel.sendMessage("**لقد تم اعطاء ✅**");
+  message.channel.sendMessage("**لقد تم اعطاءالكيك ✅**");
 }
 });
 
