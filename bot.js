@@ -26,9 +26,9 @@ client.on("message", message => {
      
       message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
       message.channel.sendMessage("", {embed: {
-        title: "تم مسح الشات بنجاح ✅",
+        title: "",
         color: 0x06DF00,
-        description: "تم مسح الرسائل بنجاح",
+        description: "✅ تم مسح الرسائل بنجاح",
         footer: {
           text: "Free Mic." 
         }
