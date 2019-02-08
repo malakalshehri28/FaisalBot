@@ -615,7 +615,7 @@ client.on('message', (message) => {
 
         member.ban().then((member) => {
 
-         message.channel.send(member.displayName + 'لقد تم اعطاء الباند ✅');
+         message.channel.send('لقد تم اعطاء الباند ✅');
 
         }).catch(() => {
 
