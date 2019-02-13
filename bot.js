@@ -80,7 +80,7 @@ client.on("reachLimit", (limit)=> {
 
 
 client.on('guildMemberAdd', member=> {
-    member.addRole(member.guild.roles.find("name","User"));
+    member.addRole(member.guild.roles.find("name","User."));
     });
 
 
