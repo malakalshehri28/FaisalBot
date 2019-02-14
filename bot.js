@@ -81,12 +81,12 @@ client.on('message', message => {
 				let humansSure = new Discord.RichEmbed()
 				.setTitle(`:red_circle: Are you sure to give **${message.guild.members.filter(m => !message.guild.member(m).roles.has(getRole.id) && !m.user.bot).size}** Humans the role **${getRole.name}**`)
 				.setColor('RED')
-				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\nyes = Sure, give him the role.\n\n = No ')
+				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\nyes = Sure, give him the role.\n\n  No ')
 				.setTimestamp()
 				.setFooter(message.author.tag, message.author.avatarURL) // Ø­Ù‚ÙˆÙ‚ Ø§Ù„ÙØ§ ÙƒÙˆÙˆØ¯Ø² Alpha Codes.
 
 				message.channel.send(humansSure).then(msg => {
-					msg.react('yes').then(() => msg.react('NO')) // Ø­Ù‚ÙˆÙ‚ Ø§Ù„ÙØ§ ÙƒÙˆÙˆØ¯Ø² Alpha Codes.
+					msg.react('yes').then(() => msg.react('No')) // Ø­Ù‚ÙˆÙ‚ Ø§Ù„ÙØ§ ÙƒÙˆÙˆØ¯Ø² Alpha Codes.
 
 					let giveHim = (reaction, user) => reaction.emoji.name === 'yes'  && user.id === message.author.id;
 					let dontGiveHim = (reaction, user) => reaction.emoji.name === 'No' && user.id === message.author.id;
@@ -116,7 +116,7 @@ client.on('message', message => {
 				let humansSure = new Discord.RichEmbed()
 				.setTitle(`:red_circle: Are you sure to remove **${getRole.name}** from **${message.guild.members.filter(m => message.guild.member(m).roles.has(getRole.id) && !m.user.bot).size}** Humans?`)
 				.setColor('RED')
-				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\nyes = Sure, remove the role from him.\n\n = No ')
+				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\nyes = Sure, remove the role from him.\n\n  No ')
 				.setTimestamp()
 				.setFooter(message.author.tag, message.author.avatarURL)
 
@@ -165,7 +165,7 @@ client.on('message', message => {
 				let botsSure = new Discord.RichEmbed()
 				.setTitle(`:red_circle: Are you sure to give **${message.guild.members.filter(b => !message.guild.member(b).roles.has(getRole.id) && b.user.bot).size}** Bots the role **${getRole.name}**`)
 				.setColor('RED')
-				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\nyes = Sure, give him the role.\n\n = No ')
+				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\nyes = Sure, give him the role.\n\n  No ')
 				.setTimestamp()
 				.setFooter(message.author.tag, message.author.avatarURL)
 
@@ -200,7 +200,7 @@ client.on('message', message => {
 				let botsSure = new Discord.RichEmbed()
 				.setTitle(`:red_circle: Are you sure to remove **${getRole.name}** from **${message.guild.members.filter(m => message.guild.member(m).roles.has(getRole.id) && m.user.bot).size}** Bots?`)
 				.setColor('RED')
-				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\nyes = Sure remove the role from him.\n\n = No ')
+				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\nyes = Sure remove the role from him.\n\n  No ')
 				.setTimestamp()
 				.setFooter(message.author.tag, message.author.avatarURL)
 
@@ -249,7 +249,7 @@ client.on('message', message => {
 				let allSure = new Discord.RichEmbed()
 				.setTitle(`:red_circle: Are you sure to give **${message.guild.members.filter(m => !message.guild.member(m).roles.has(getRole.id)).size}** The role **${getRole.name}** ?`)
 				.setColor('RED')
-				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\yes = Sure give all the role.\n\n = No ')
+				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\yes = Sure give all the role.\n\n  No ')
 				.setTimestamp()
 				.setFooter(message.author.tag, message.author.avatarURL)
 
@@ -284,7 +284,7 @@ client.on('message', message => {
 				let allSure = new Discord.RichEmbed() // Ø­Ù‚ÙˆÙ‚ Ø§Ù„ÙØ§ ÙƒÙˆÙˆØ¯Ø² Alpha Codes.
 				.setTitle(`:red_circle: Are you sure to remove **${getRole.name}** from **${message.guild.members.filter(m => message.guild.member(m).roles.has(getRole.id)).size}** ?`)
 				.setColor('RED')
-				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\nyes = Sure remove the role from him.\n\n = No ')
+				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\nyes = Sure remove the role from him.\n\n  No ')
 				.setTimestamp()
 				.setFooter(message.author.tag, message.author.avatarURL)
 
