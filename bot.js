@@ -34,7 +34,7 @@ client.on('message', message => {
 		let roleCommand = new Discord.RichEmbed()
 		.setTitle(':white_check_mark: Role Command.')
 		.setColor('GREEN')
-		.setDescription(`**\n${prefix}role <SOMEONE> <ROLE>**\nâž¥ \`\`For give or delete from some one the role.\`\`\n\n**${prefix}role humans add <ROLE>**\nâž¥ \`\`For give the humans role.\`\`\n\n**${prefix}role humans remove <ROLE>**\nâž¥ \`\`For delete from the humans role.\`\`\n\n**${prefix}role bots add <ROLE>**\nâž¥ \`\`For give the bots role.\`\`\n\n**${prefix}role bots remove <ROLE>**\nâž¥ \`\`For delete from the bots role.\`\`\n\n**${prefix}role all add <ROLE>**\nâž¥ \`\`For give all role.\`\`\n\n**${prefix}role all remove <ROLE>**\nâž¥ \`\`For remove from all role.\`\``)
+		.setDescription(`**\n${prefix}role <SOMEONE> <ROLE>**\n \`\`For give or delete from some one the role.\`\`\n\n**${prefix}role humans add <ROLE>**\n \`\`For give the humans role.\`\`\n\n**${prefix}role humans remove <ROLE>**\n \`\`For delete from the humans role.\`\`\n\n**${prefix}role bots add <ROLE>**\n \`\`For give the bots role.\`\`\n\n**${prefix}role bots remove <ROLE>**\n \`\`For delete from the bots role.\`\`\n\n**${prefix}role all add <ROLE>**\n \`\`For give all role.\`\`\n\n**${prefix}role all remove <ROLE>**\n \`\`For remove from all role.\`\``)
 		.setTimestamp()
 		.setFooter(message.author.tag, message.author.avatarURL)
 
