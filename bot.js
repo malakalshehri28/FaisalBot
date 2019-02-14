@@ -65,7 +65,7 @@ client.on('message', message => {
 			let notArgs = new Discord.RichEmbed()
 			.setTitle(':white_check_mark: Role Command.')
 			.setColor('GREEN')
-			.setDescription(`**\n${prefix}role humans add <ROLE>**\nâž¥ \`\`For give the humans the role.\`\`\n\n**${prefix}role humans remove <ROLE>**\nâž¥ \`\`For delete the role from all humans.\`\``)
+			.setDescription(`**\n${prefix}role humans add <ROLE>**\n \`\`For give the humans the role.\`\`\n\n**${prefix}role humans remove <ROLE>**\n \`\`For delete the role from all humans.\`\``)
 			.setTimestamp()
 			.setFooter(message.author.tag, message.author.avatarURL)
 			
@@ -81,15 +81,15 @@ client.on('message', message => {
 				let humansSure = new Discord.RichEmbed()
 				.setTitle(`:red_circle: Are you sure to give **${message.guild.members.filter(m => !message.guild.member(m).roles.has(getRole.id) && !m.user.bot).size}** Humans the role **${getRole.name}**`)
 				.setColor('RED')
-				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\nâœ… = Sure, give him the role.\n\nâŽ = No no, cancel.')
+				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\nyes = Sure, give him the role.\n\n = No ')
 				.setTimestamp()
 				.setFooter(message.author.tag, message.author.avatarURL) // Ø­Ù‚ÙˆÙ‚ Ø§Ù„ÙØ§ ÙƒÙˆÙˆØ¯Ø² Alpha Codes.
 
 				message.channel.send(humansSure).then(msg => {
-					msg.react('âœ…').then(() => msg.react('âŽ')) // Ø­Ù‚ÙˆÙ‚ Ø§Ù„ÙØ§ ÙƒÙˆÙˆØ¯Ø² Alpha Codes.
+					msg.react('yes').then(() => msg.react('NO')) // Ø­Ù‚ÙˆÙ‚ Ø§Ù„ÙØ§ ÙƒÙˆÙˆØ¯Ø² Alpha Codes.
 
-					let giveHim = (reaction, user) => reaction.emoji.name === 'âœ…'  && user.id === message.author.id;
-					let dontGiveHim = (reaction, user) => reaction.emoji.name === 'âŽ' && user.id === message.author.id;
+					let giveHim = (reaction, user) => reaction.emoji.name === 'yes'  && user.id === message.author.id;
+					let dontGiveHim = (reaction, user) => reaction.emoji.name === 'No' && user.id === message.author.id;
 					let give = msg.createReactionCollector(giveHim, { time: 60000 });
 					let dontGive = msg.createReactionCollector(dontGiveHim, { time: 60000 });
 
@@ -116,15 +116,15 @@ client.on('message', message => {
 				let humansSure = new Discord.RichEmbed()
 				.setTitle(`:red_circle: Are you sure to remove **${getRole.name}** from **${message.guild.members.filter(m => message.guild.member(m).roles.has(getRole.id) && !m.user.bot).size}** Humans?`)
 				.setColor('RED')
-				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\nâœ… = Sure, remove the role from him.\n\nâŽ = No no, cancel.')
+				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\nyes = Sure, remove the role from him.\n\n = No ')
 				.setTimestamp()
 				.setFooter(message.author.tag, message.author.avatarURL)
 
 				message.channel.send(humansSure).then(msg => {
-					msg.react('âœ…').then(() => msg.react('âŽ')) // Ø­Ù‚ÙˆÙ‚ Ø§Ù„ÙØ§ ÙƒÙˆÙˆØ¯Ø² Alpha Codes.
+					msg.react('yes').then(() => msg.react('No')) // Ø­Ù‚ÙˆÙ‚ Ø§Ù„ÙØ§ ÙƒÙˆÙˆØ¯Ø² Alpha Codes.
 
-					let removeRole = (reaction, user) => reaction.emoji.name === 'âœ…'  && user.id === message.author.id;
-					let dontRemoveRole = (reaction, user) => reaction.emoji.name === 'âŽ' && user.id === message.author.id;
+					let removeRole = (reaction, user) => reaction.emoji.name === 'yes'  && user.id === message.author.id;
+					let dontRemoveRole = (reaction, user) => reaction.emoji.name === 'No' && user.id === message.author.id;
 					let remove = msg.createReactionCollector(removeRole, { time: 60000 });
 					let dontRemove = msg.createReactionCollector(dontRemoveRole, { time: 60000 });
 
@@ -149,7 +149,7 @@ client.on('message', message => {
 		let notArgs = new Discord.RichEmbed()
 			.setTitle(':white_check_mark: Role Command.')
 			.setColor('GREEN')
-			.setDescription(`**\n${prefix}role bots add <ROLE>**\nâž¥ \`\`For give the bots the role.\`\`\n\n**${prefix}role bots remove <ROLE>**\nâž¥ \`\`For delete the role from all bots.\`\``)
+			.setDescription(`**\n${prefix}role bots add <ROLE>**\n \`\`For give the bots the role.\`\`\n\n**${prefix}role bots remove <ROLE>**\n \`\`For delete the role from all bots.\`\``)
 			.setTimestamp()
 			.setFooter(message.author.tag, message.author.avatarURL) // Ø­Ù‚ÙˆÙ‚ Ø§Ù„ÙØ§ ÙƒÙˆÙˆØ¯Ø² Alpha Codes.
 			
@@ -165,15 +165,15 @@ client.on('message', message => {
 				let botsSure = new Discord.RichEmbed()
 				.setTitle(`:red_circle: Are you sure to give **${message.guild.members.filter(b => !message.guild.member(b).roles.has(getRole.id) && b.user.bot).size}** Bots the role **${getRole.name}**`)
 				.setColor('RED')
-				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\nâœ… = Sure, give him the role.\n\nâŽ = No no, cancel.')
+				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\nyes = Sure, give him the role.\n\n = No ')
 				.setTimestamp()
 				.setFooter(message.author.tag, message.author.avatarURL)
 
 				message.channel.send(botsSure).then(msg => {
-					msg.react('âœ…').then(() => msg.react('âŽ')) // Ø­Ù‚ÙˆÙ‚ Ø§Ù„ÙØ§ ÙƒÙˆÙˆØ¯Ø² Alpha Codes.
+					msg.react('yes').then(() => msg.react('No')) // Ø­Ù‚ÙˆÙ‚ Ø§Ù„ÙØ§ ÙƒÙˆÙˆØ¯Ø² Alpha Codes.
 
-					let giveHim = (reaction, user) => reaction.emoji.name === 'âœ…'  && user.id === message.author.id;
-					let dontGiveHim = (reaction, user) => reaction.emoji.name === 'âŽ' && user.id === message.author.id;
+					let giveHim = (reaction, user) => reaction.emoji.name === 'yes'  && user.id === message.author.id;
+					let dontGiveHim = (reaction, user) => reaction.emoji.name === 'No' && user.id === message.author.id;
 					let give = msg.createReactionCollector(giveHim, { time: 60000 });
 					let dontGive = msg.createReactionCollector(dontGiveHim, { time: 60000 });
 
@@ -200,15 +200,15 @@ client.on('message', message => {
 				let botsSure = new Discord.RichEmbed()
 				.setTitle(`:red_circle: Are you sure to remove **${getRole.name}** from **${message.guild.members.filter(m => message.guild.member(m).roles.has(getRole.id) && m.user.bot).size}** Bots?`)
 				.setColor('RED')
-				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\nâœ… = Sure, remove the role from him.\n\nâŽ = No no, cancel.')
+				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\nyes = Sure remove the role from him.\n\n = No ')
 				.setTimestamp()
 				.setFooter(message.author.tag, message.author.avatarURL)
 
 				message.channel.send(botsSure).then(msg => {
-					msg.react('âœ…').then(() => msg.react('âŽ'))
+					msg.react('yes').then(() => msg.react('Ni'))
 
-					let removeRole = (reaction, user) => reaction.emoji.name === 'âœ…'  && user.id === message.author.id;
-					let dontRemoveRole = (reaction, user) => reaction.emoji.name === 'âŽ' && user.id === message.author.id;
+					let removeRole = (reaction, user) => reaction.emoji.name === 'yes'  && user.id === message.author.id;
+					let dontRemoveRole = (reaction, user) => reaction.emoji.name === 'No' && user.id === message.author.id;
 					let remove = msg.createReactionCollector(removeRole, { time: 60000 });
 					let dontRemove = msg.createReactionCollector(dontRemoveRole, { time: 60000 });
 
@@ -233,7 +233,7 @@ client.on('message', message => {
 			let notArgs = new Discord.RichEmbed()
 			.setTitle(':white_check_mark: Role Command.')
 			.setColor('GREEN')
-			.setDescription(`**\n${prefix}role all add <ROLE>**\nâž¥ \`\`For give all the role.\`\`\n\n**${prefix}role all remove <ROLE>**\nâž¥ \`\`For delete the role from all.\`\``)
+			.setDescription(`**\n${prefix}role all add <ROLE>**\n \`\`For give all the role.\`\`\n\n**${prefix}role all remove <ROLE>**\n \`\`For delete the role from all.\`\``)
 			.setTimestamp()
 			.setFooter(message.author.tag, message.author.avatarURL)
 			
@@ -249,15 +249,15 @@ client.on('message', message => {
 				let allSure = new Discord.RichEmbed()
 				.setTitle(`:red_circle: Are you sure to give **${message.guild.members.filter(m => !message.guild.member(m).roles.has(getRole.id)).size}** The role **${getRole.name}** ?`)
 				.setColor('RED')
-				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\nâœ… = Sure, give all the role.\n\nâŽ = No no, cancel.')
+				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\yes = Sure give all the role.\n\n = No ')
 				.setTimestamp()
 				.setFooter(message.author.tag, message.author.avatarURL)
 
 				message.channel.send(allSure).then(msg => {
-					msg.react('âœ…').then(() => msg.react('âŽ'))
+					msg.react('yes').then(() => msg.react('No'))
 
-					let giveAll = (reaction, user) => reaction.emoji.name === 'âœ…'  && user.id === message.author.id;
-					let dontGiveAll = (reaction, user) => reaction.emoji.name === 'âŽ' && user.id === message.author.id;
+					let giveAll = (reaction, user) => reaction.emoji.name === 'yes'  && user.id === message.author.id;
+					let dontGiveAll = (reaction, user) => reaction.emoji.name === 'No' && user.id === message.author.id;
 					let give = msg.createReactionCollector(giveAll, { time: 60000 });
 					let dontGive = msg.createReactionCollector(dontGiveAll, { time: 60000 });
 
@@ -284,15 +284,15 @@ client.on('message', message => {
 				let allSure = new Discord.RichEmbed() // Ø­Ù‚ÙˆÙ‚ Ø§Ù„ÙØ§ ÙƒÙˆÙˆØ¯Ø² Alpha Codes.
 				.setTitle(`:red_circle: Are you sure to remove **${getRole.name}** from **${message.guild.members.filter(m => message.guild.member(m).roles.has(getRole.id)).size}** ?`)
 				.setColor('RED')
-				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\nâœ… = Sure, remove the role from him.\n\nâŽ = No no, cancel.')
+				.setDescription('**\nYou have 1 min to choose reaction you want.**\n\nyes = Sure remove the role from him.\n\n = No ')
 				.setTimestamp()
 				.setFooter(message.author.tag, message.author.avatarURL)
 
 				message.channel.send(allSure).then(msg => {
-					msg.react('âœ…').then(() => msg.react('âŽ'))
+					msg.react('yes').then(() => msg.react('No'))
 
-					let removeRole = (reaction, user) => reaction.emoji.name === 'âœ…'  && user.id === message.author.id;
-					let dontRemoveRole = (reaction, user) => reaction.emoji.name === 'âŽ' && user.id === message.author.id; // Ø­Ù‚ÙˆÙ‚ Ø§Ù„ÙØ§ ÙƒÙˆÙˆØ¯Ø² Alpha Codes.
+					let removeRole = (reaction, user) => reaction.emoji.name === 'yes'  && user.id === message.author.id;
+					let dontRemoveRole = (reaction, user) => reaction.emoji.name === 'No' && user.id === message.author.id; // Ø­Ù‚ÙˆÙ‚ Ø§Ù„ÙØ§ ÙƒÙˆÙˆØ¯Ø² Alpha Codes.
 					let remove = msg.createReactionCollector(removeRole, { time: 60000 });
 					let dontRemove = msg.createReactionCollector(dontRemoveRole, { time: 60000 });
 
