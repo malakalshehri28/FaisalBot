@@ -26,7 +26,7 @@ client.on('message', message => {
 antibots[message.guild.id] = {
 onoff: 'On',
 }
-message.channel.send(`**✅ The AntiBots Is __𝐎𝐍__ !**`)
+message.channel.send(`**✅ The AntiBots Is ON !**`)
           fs.writeFile("./antibots.json", JSON.stringify(antibots), (err) => {
             if (err) console.error(err)
             .catch(err => {
@@ -47,7 +47,7 @@ client.on('message', message => {
 antibots[message.guild.id] = {
 onoff: 'Off',
 }
-message.channel.send(`**⛔ The AntiBots Is __𝐎𝐅𝐅__ !**`)
+message.channel.send(`**⛔ The AntiBots Is OFF !**`)
           fs.writeFile("./antibots.json", JSON.stringify(antibots), (err) => {
             if (err) console.error(err)
             .catch(err => {
