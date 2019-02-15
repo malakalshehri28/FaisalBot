@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
+const fs = require("fs")
 var prefix = "#";
 client.on('ready', () => {
    console.log(`----------------`);
@@ -16,7 +17,6 @@ client.user.setGame(`Free Mic.`,"http://twitch.tv//idk")
 
 
 
-const fs = require("fs")
   
 let antibots = JSON.parse(fs.readFileSync('./antibots.json' , 'utf8'));//require antihack.json file
 client.on('message', message => {
