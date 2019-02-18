@@ -21,8 +21,8 @@ client.on('guildMemberAdd', member => {
     const ei = invites[member.guild.id];
     const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
     const inviter = client.users.get(invite.inviter.id);
-    const xkiller = member.guild.channels.find("name", "test");
-     xkiller.send(`invite by <@${inviter.id}>`);
+    const xkiller = member.guild.channels.find("name", "welcome");
+     xkiller.send(`<@${member.user.id}> تمت الدعوه من <@${inviter.id}>`);
   });
 });
 
