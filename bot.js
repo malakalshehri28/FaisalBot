@@ -1489,21 +1489,16 @@ var w = 'عضو';
 let embed = new Discord.RichEmbed()
 .setColor("#502faf")
 .addField(' اسمك',`**<@` + `${z.id}` + `>**`, true)
-.addField(' ايدي', "**"+ `${z.id}` +"**",true)
-.addField(' Playing','**'+y+'**' , true)
-.addField(' نوع حسابك',"**"+ w + "**",true)    
+.addField(' ايدي', "**"+ `${z.id}` +"**",true)    
 .addField(' الكود حق حسابك',"**#" +  `${z.discriminator}**`,true)
 .addField('**التاريح الذي انشئ فيه حسابك   ** ' ,year + "-"+ month +"-"+ day)    
 .addField("**تاريخ دخولك للسيرفر    **", message.member.joinedAt.toLocaleString())    
  
-.addField('**تاريخ انشاء حسابك الكامل**', message.author.createdAt.toLocaleString())
-.addField("**اخر رسالة لك    **", message.author.lastMessage)            
+.addField('**تاريخ انشاء حسابك الكامل**', message.author.createdAt.toLocaleString())            
  
-.setThumbnail(`${z.avatarURL}`)
-.setFooter(message.author.username, message.author.avatarURL)
  
 message.channel.send({embed});
-  if (!message) return message.reply('**ضع المينشان بشكل صحيح  ❌ **').catch(console.error);
+  if (!message) return message.reply('**ضع المنشن بشكل صحيح  ❌ **').catch(console.error);
  
 }
  
