@@ -1493,8 +1493,7 @@ let embed = new Discord.RichEmbed()
 .addField(' الكود حق حسابك',"**#" +  `${z.discriminator}**`,true)
 .addField('**التاريح الذي انشئ فيه حسابك   ** ' ,year + "-"+ month +"-"+ day)    
 .addField("**تاريخ دخولك للسيرفر    **", message.member.joinedAt.toLocaleString())    
- 
-.addField('**تاريخ انشاء حسابك الكامل**', message.author.createdAt.toLocaleString())            
+
  
  
 message.channel.send({embed});
