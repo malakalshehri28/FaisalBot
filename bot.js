@@ -9,7 +9,7 @@ client.on('ready', () => {
       console.log(`ON ${client.guilds.size} Servers '     Script By : AJ ' `);
     console.log(`----------------`);
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`Free Mic.`,"http://twitch.tv//idk")
+client.user.setGame(`Promise`,"http://twitch.tv//idk")
 });
 
 
@@ -36,7 +36,7 @@ client.on('guildMemberAdd', member => {
     invites[member.guild.id] = guildInvites;
     const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
     const inviter = client.users.get(invite.inviter.id);
-    const logChannel = member.guild.channels.find(channel => channel.name === "all");
+    const logChannel = member.guild.channels.find(channel => channel.name === "chat");
     logChannel.send(`invite by: <@${inviter.id}>`);
   });
 });
