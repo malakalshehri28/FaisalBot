@@ -418,7 +418,7 @@ const prefix = '#'
  
   client.on('message', message => {
     if (message.content.startsWith("الوان")) {
-      return message.channel.send({file : "https://b.top4top.net/p_1128qcp3s0.jpeg"})
+      return message.channel.send({file : "https://e.top4top.net/p_1163ex1y00.jpeg"})
     }
   });
 
