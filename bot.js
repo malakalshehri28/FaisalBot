@@ -36,7 +36,7 @@ client.on('guildMemberAdd', member => {
     invites[member.guild.id] = guildInvites;
     const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
     const inviter = client.users.get(invite.inviter.id);
-    const logChannel = member.guild.channels.find(channel => channel.name === "chat");
+    const logChannel = member.guild.channels.find(channel => channel.name === "txt");
     logChannel.send(`invite by: <@${inviter.id}>`);
   });
 });
@@ -48,18 +48,18 @@ client.on('guildMemberAdd', member => {
 
 var config = {
   events: [
-    {type: "CHANNEL_CREATE", logType: "CHANNEL_CREATE", limit: 1 , delay: 3000},
-{type: "CHANNEL_CREATE", logType: "CHANNEL_CREATE", limit: 1 , delay: 2000},
-{type: "CHANNEL_CREATE", logType: "CHANNEL_CREATE", limit: 5 , delay: 1000},
-    {type: "CHANNEL_DELETE", logType: "CHANNEL_DELETE", limit: 1, delay: 3000},
-{type: "CHANNEL_DELETE", logType: "CHANNEL_DELETE", limit: 1, delay: 2000},
-{type: "CHANNEL_DELETE", logType: "CHANNEL_DELETE", limit: 5, delay: 1000},
-    {type: "GUILD_MEMBER_REMOVE", logType: "MEMBER_KICK", limit: 1, delay: 3000},
-{type: "GUILD_MEMBER_REMOVE", logType: "MEMBER_KICK", limit: 1, delay: 2000},
-{type: "GUILD_MEMBER_REMOVE", logType: "MEMBER_KICK", limit: 5, delay: 1000},
-    {type: "GUILD_BAN_ADD", logType: "MEMBER_BAN_ADD", limit: 1, delay: 3000},
-{type: "GUILD_BAN_ADD", logType: "MEMBER_BAN_ADD", limit: 1, delay: 2000},
-{type: "GUILD_BAN_ADD", logType: "MEMBER_BAN_ADD", limit: 5, delay: 1000}
+    {type: "CHANNEL_CREATE", logType: "CHANNEL_CREATE", limit: 5 , delay: 5000},
+{type: "CHANNEL_CREATE", logType: "CHANNEL_CREATE", limit: 5 , delay: 5000},
+{type: "CHANNEL_CREATE", logType: "CHANNEL_CREATE", limit: 5 , delay: 5000},
+    {type: "CHANNEL_DELETE", logType: "CHANNEL_DELETE", limit: 1, delay: 5000},
+{type: "CHANNEL_DELETE", logType: "CHANNEL_DELETE", limit: 5, delay: 5000},
+{type: "CHANNEL_DELETE", logType: "CHANNEL_DELETE", limit: 5, delay: 5000},
+    {type: "GUILD_MEMBER_REMOVE", logType: "MEMBER_KICK", limit: 1, delay: 5000},
+{type: "GUILD_MEMBER_REMOVE", logType: "MEMBER_KICK", limit: 5, delay: 5000},
+{type: "GUILD_MEMBER_REMOVE", logType: "MEMBER_KICK", limit: 5, delay: 5000},
+    {type: "GUILD_BAN_ADD", logType: "MEMBER_BAN_ADD", limit: 5, delay: 5000},
+{type: "GUILD_BAN_ADD", logType: "MEMBER_BAN_ADD", limit: 5, delay: 5000},
+{type: "GUILD_BAN_ADD", logType: "MEMBER_BAN_ADD", limit: 5, delay: 5000}
   ]
 }
 client.on("raw", (packet)=> {
@@ -111,7 +111,7 @@ client.on("reachLimit", (limit)=> {
 
 
 client.on('guildMemberAdd', member=> {
-    member.addRole(member.guild.roles.find("name","User."));
+    member.addRole(member.guild.roles.find("name","user"));
     });
 
 
