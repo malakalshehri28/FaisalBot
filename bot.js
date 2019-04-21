@@ -417,7 +417,7 @@ const prefix = '#'
  
  
   client.on('message', message => {
-    if (message.content.startsWith("الوان")) {
+    if (message.content.startsWith("2الوان")) {
       return message.channel.send({file : "https://e.top4top.net/p_1163rv0670.jpeg"})
     }
   });
@@ -431,7 +431,7 @@ const prefix = '#'
 
 client.on('message', message => {
             let args = message.content.split(' ').slice(1);
-            if(message.content.split(' ')[0] == `لون`){
+            if(message.content.split(' ')[0] == `2لون`){
             const embedd = new Discord.RichEmbed()
             .setFooter('Requested by '+message.author.username, message.author.avatarURL)
             .setDescription(`**لا يوجد لون بهذا الأسم ** ❌ `)
