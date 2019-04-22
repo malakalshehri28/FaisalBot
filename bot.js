@@ -509,52 +509,27 @@ msg.delete();
 
 
 
-client.on("message", (message) => {
-    if (message.author.bot) return;
-    if (!prefix) {
-        var prefix = "#";
-    }
-    if (!message.content.startsWith(prefix)) return;
-    var args = message.content.split(" ")
-    var command = args[0].slice(prefix.length);
-    switch (command) {
-        case "setvoice":
-        if (!message.member.hasPermission("MANAGE_CHANNELS")) {
-            message.reply("** You do not have enough permissions ** | ❌");
-            return {};
-        }
-        if (message.guild.channels.find(channel => channel.name.includes("Voice online:"))) {
-            message.reply("** There is a Voice online ** | ❌");
-            return {};
-        }
-        message.guild.createChannel(`Voice online: [${message.guild.members.filter(member => member.voiceChannel).size}]`, "voice").then(channel => {
-            channel.setPosition(1);
-            channel.overwritePermissions(message.guild.id, {
-                CONNECT: false
-            });
-            data[channel.id] = true;
-        });
-        message.channel.send("** Done **");
-        break;
-    }
-})
-.on("ready", () => {
-    client.guilds.forEach(guild => {
-        var channel = guild.channels.find(channel => channel.name.includes("Voice online:"))
-        if (channel) {
-            data[channel.id] = true;
-        }
-    })
-})
-.on("voiceStateUpdate", (oldMember, newMember) => {
-    newMember.guild.channels.forEach(channel => {
-        if (data[channel.id]) {
-            channel.edit({
-                name: `Voice online: [${channel.guild.members.filter(member => member.voiceChannel).size}]`
-            });
-        }
+
+
+client.on('message',async message => {
+  if(message.content.startsWith("#setvoice")){
+
+  if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **ليس لديك الصلاحيات الكافية**');
+  if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **ليس معي الصلاحيات الكافية**');
+  message.channel.send('✅| **تم عمل الروم بنجاح**');
+  message.guild.createChannel(`Voice Online : [ ${message.guild.members.filter(m => m.voiceChannel).size} ]` , 'voice').then(c => {
+    console.log(`Voice online channel setup for guild: \n ${message.guild.name}`);
+    c.overwritePermissions(message.guild.id, {
+      CONNECT: false,
+      SPEAK: false
     });
-})
+    setInterval(() => {
+      c.setName(`Voice Online : [ ${message.guild.members.filter(m => m.voiceChannel).size} ]`)
+    },1000);
+  });
+  }
+});
+
 
 
 
