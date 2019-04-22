@@ -509,7 +509,6 @@ msg.delete();
 
 
 
-var client = new Client();
 client.on("message", (message) => {
     if (message.author.bot) return;
     if (!prefix) {
