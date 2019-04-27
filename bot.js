@@ -259,41 +259,6 @@ message.author.send(`**مدة الرابط : يوم
 });
 
 
-client.on('message', message => {
-
-    if (message.content === "#mc") {
-                        if(!message.channel.guild) return message.reply(' هذا الامر فقط للسيرفرات !!');
-
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' ليس لديك صلاحيات');
-           message.channel.overwritePermissions(message.guild.id, {
-         SEND_MESSAGES: false
-
-           }).then(() => {
-               message.reply("تم تقفيل الشات")
-           });
-             }
-if (message.content === "#umc") {
-    if(!message.channel.guild) return message.reply(' هذا الامر فقط للسيرفرات !!');
-
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('ليس لديك صلاحيات');
-           message.channel.overwritePermissions(message.guild.id, {
-         SEND_MESSAGES: true
-
-           }).then(() => {
-               message.reply("تم فتح الشات")
-           });
-             }
-
-
-
-});
-
-
-
-
-
-
-
 
 
 client.on('message', message => {
@@ -572,54 +537,6 @@ msg.delete();
 
 
 
-
-
-client.on('message', message => {
-  var prefix = "#"
-var args = message.content.split(" ").slice(1);    
-if(message.content.startsWith(prefix + 'id')) {
-var year = message.author.createdAt.getFullYear()
-var month = message.author.createdAt.getMonth()
-var day = message.author.createdAt.getDate()
-var men = message.mentions.users.first();  
-let args = message.content.split(' ').slice(1).join(' ');
-if (args == '') {
-var z = message.author;
-}else {
-var z = message.mentions.users.first();
-}
- 
-let d = z.createdAt;          
-let n = d.toLocaleString();  
-let x;                      
-let y;                        
- 
-if (z.presence.game !== null) {
-y = `${z.presence.game.name}`;
-} else {
-y = "No Playing";
-}
-if (z.bot) {
-var w = 'بوت';
-}else {
-var w = 'عضو';
-}
-let embed = new Discord.RichEmbed()
-.setColor("#502faf")
-.addField(' اسمك',`**<@` + `${z.id}` + `>**`, true)
-.addField(' ايدي', "**"+ `${z.id}` +"**",true)    
-.addField(' الكود حق حسابك',"**#" +  `${z.discriminator}**`,true)
-.addField('**التاريح الذي انشئ فيه حسابك   ** ' ,year + "-"+ month +"-"+ day)    
-.addField("**تاريخ دخولك للسيرفر    **", message.member.joinedAt.toLocaleString())    
-
- 
- 
-message.channel.send({embed});
-  if (!message) return message.reply('**ضع المنشن بشكل صحيح  ❌ **').catch(console.error);
- 
-}
- 
-});
 
 
 
