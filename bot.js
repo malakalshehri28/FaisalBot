@@ -36,7 +36,7 @@ client.on('guildMemberAdd', member => {
     invites[member.guild.id] = guildInvites;
     const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
     const inviter = client.users.get(invite.inviter.id);
-    const logChannel = member.guild.channels.find(channel => channel.name === "txt");
+    const logChannel = member.guild.channels.find(channel => channel.name === "chat");
     logChannel.send(`**Welcome to Server FreeMic.**
 invite by: <@${inviter.id}>`);
   });
