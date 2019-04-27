@@ -346,6 +346,8 @@ client.on('message', (message) => {
         var member= message.mentions.members.first();
 
         member.ban().then((member) => {
+        var embed = new Discord.RichEmbed()
+        .setColor("#000000")")
 
          message.channel.send('لقد تم اعطاء الباند ✅');
 
