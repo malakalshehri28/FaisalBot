@@ -14,8 +14,6 @@ client.user.setGame(`FreeMic.`,"http://twitch.tv//idk")
 
 
 
-
-
 const invites = {};
 
 const wait = require('util').promisify(setTimeout);
@@ -66,7 +64,6 @@ client.on('guildMemberAdd', member => {
 
   
 });
-
 
 
 
@@ -127,10 +124,6 @@ client.on('message', (message) => {
 
 
 
-
-
-
-
 client.on('message', message => {
     if (message.content.startsWith("رابط")) {
 
@@ -181,7 +174,6 @@ message.channel.send("لا تستطيع سحب "+ message.mentions.members.first
 } else {
 message.react("❌")
  }}});
-
 
 
 
@@ -367,11 +359,6 @@ client.on('message', message => {
    }
  
 });
-
-
-
-
-
 
 
 
